@@ -28,10 +28,15 @@ public class VoteForBogdan {
         Utils.sleepABit();
         driver.findElement(By.cssSelector("div.rodo a.button")).click();
         Utils.sleepABit();
+        Utils.sleepABit();
+        driver.findElement(By.cssSelector("div.cookie-bar a.close")).click();
+        Utils.sleepABit();
         driver.findElement(By.cssSelector("#yes button")).click();
         Utils.sleepABit();
+        driver.switchTo().frame(driver.findElement(By.tagName("iframe")));
+        Utils.sleepABit();
         driver.findElement(By.cssSelector("#recaptcha-anchor")).click();
-        System.out.println("Voting for Bogdan done with success");
+        System.out.println("Voting for Bogdan done with success if capcha was not shown");
         //then
         assertThat(driver.getTitle(), containsString("Bogdan Czyż"));
     }
